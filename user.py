@@ -42,7 +42,7 @@ class CalEquation(User):
     # with regards to gender. It will account for the unit of measurement inputted and
     # will determine the correct equation accordingly.
     def male_user():
-      if self.measurement == 'metric':
+      if self.measurement == "metric":
         bmr = 66.5 + (13.75 * self.weight) + (5.003 * self.height) - (6.755 *
                                                                       self.age)
         bmr_mod = round(bmr * self.activity_level_mod())
@@ -55,7 +55,7 @@ class CalEquation(User):
       return bmr_mod
 
     def female_user():
-      if self.measurement == 'metric':
+      if self.measurement == "metric":
         bmr = 655.1 + (9.563 * self.weight) + (1.850 * self.height) - (
           4.676 * self.age)
         bmr_mod = round(bmr * self.activity_level_mod())
@@ -70,7 +70,7 @@ class CalEquation(User):
 
 
     # Will determine what equation to use based on gender input
-    if self.gender == 'M':
+    if self.gender == "M":
       return male_user()
     else:
       return female_user()

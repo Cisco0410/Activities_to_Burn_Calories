@@ -14,10 +14,10 @@ def data_collect_clean():
    # print(col, activities[col].isnull().sum())
   
   # Converts to non-metric system
-  activities_df['Calories per lb'] = activities_df['Calories per kg'] * 2.20462
+  activities_df["Calories per lb"] = activities_df["Calories per kg"] * 2.20462
   
   # Deletes unnecessary columns for this project.
-  activities_df.drop(columns=['130 lb', '155 lb', '180 lb', '205 lb'], inplace=True)
+  activities_df.drop(columns=["130 lb", "155 lb", "180 lb", "205 lb"], inplace=True)
   return activities_df
 
 
@@ -45,8 +45,8 @@ class DataEq(CalEquation):
     matches_df = pd.DataFrame(list_of_matches)
     matches_df.rename(columns= {0: "Activities_First"}, inplace= True )
     rec_act_df = pd.merge(self.activities_df, matches_df, on= ["Activities_First"], how= "inner")
-    # This will delete the duplicates created in the for loop. The logic behind this is that the get_close_matches method will pull all the matches with the highest similarity ratio. The duplicates are from the for loop, so we can just drop them until the results are all unique (which will only be 8 since that's what's specified in the get_close_matches function)
-    rec_act_df.drop_duplicates(subset= "Activity, Exercise or Sport (1 hour)", keep= 'first',inplace= True)
+    # This will delete the duplicates created in the for loop. The logic behind this is that the get_close_matches method will pull all the matches with the highest similarity ratio. The duplicates are from the for loop, so we can just drop them until the results are all unique (which will only be 8 since that's what's specified in the get_close_matches function
+    rec_act_df.drop_duplicates(subset= "Activity, Exercise or Sport (1 hour)", keep= "first",inplace= True)
     return rec_act_df
 
   def cals_to_burn(self):
@@ -61,9 +61,10 @@ class DataEq(CalEquation):
     while True:      
       rec_act_df = self.user_input_act()
       rec_act_df.rename(columns= {"Activity, Exercise or Sport (1 hour)": "Activity, Exercise or Sport"}, inplace= True)
-      # 
+      # Will take the difference (in minutes) of the current calories  with the recommended calories to determine how many minutes per what activity was matched to burn the calories back to the recommended intake
       if self.measurement == "metric":
         rec_act_df["Time_to_burn_calories (m)"] = round(((((curr_cals / rec_act_df["Calories per kg"]) / self.weight) * 60) - ((self.eq_by_gender() / rec_act_df["Calories per kg"]) / self.weight) * 60))
+        
       else:
         rec_act_df["Time_to_burn_calories (m)"] = round(((((curr_cals / rec_act_df["Calories per lb"]) / self.weight) * 60) -   ((self.eq_by_gender() / rec_act_df["Calories per lb"]) / self.weight) * 60))
         
@@ -71,7 +72,7 @@ class DataEq(CalEquation):
       
       repeat_loop = input("\nWould you like to try with another activity [yes or no]?: ").lower()
       
-      if repeat_loop == 'yes':
+      if repeat_loop == "yes":
         continue
       else:
         break

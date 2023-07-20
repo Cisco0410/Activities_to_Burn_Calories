@@ -56,9 +56,9 @@ def user_inputs():
                 "\n\n Choose between 1-5: "))
                 # Will check if input is in range. If not, it will raise a ValueError, forcing it to the "except" block, thus re-intiating the loop and re-asking user input.
           if activity_level in range(1,6):
-              break   # Will break the all loops - including the while loo
+              break   # Will break all loops - including the while loop
           else:
-              raise ValueError('Number inputted not one of the options') 
+              raise ValueError("Number inputted not one of the options") 
         except:                                                          
               continue
     user_info = CalEquation(weight, height, measurement, age, activity_level, gender)
@@ -66,5 +66,3 @@ def user_inputs():
     
     cals_burn = DataEq(weight, height, measurement, age, activity_level, gender, data_collect_clean())
     cals_burn.cals_to_burn()
-
-# This is the section where we'll st
