@@ -61,6 +61,8 @@ def user_inputs():
               raise ValueError("Number inputted not one of the options") 
         except:                                                          
               continue
+
+      # Below is where are classes will be utilized
     user_info = CalEquation(weight, height, measurement, age, activity_level, gender)
     user_info.eq_by_gender()
     
