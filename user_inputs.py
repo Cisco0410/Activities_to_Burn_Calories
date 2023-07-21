@@ -1,7 +1,7 @@
 from user import *
 from data import *
 
-# Begins are calorie burning calculator
+# Begins our calorie burning calculator
 def user_inputs():
     # User will enter their info. Inputs will be formatted for consistency in data
     measurement = input("Welcome! Before we begin, what system of measurement do you follow? (metric or non-metric): ").lower()
@@ -62,7 +62,7 @@ def user_inputs():
         except:                                                          
               continue
 
-      # Below is where are classes will be utilized
+      # Below is where our classes will be utilized
     user_info = CalEquation(weight, height, measurement, age, activity_level, gender)
     user_info.eq_by_gender()
     
