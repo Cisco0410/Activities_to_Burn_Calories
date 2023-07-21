@@ -57,7 +57,7 @@ class DataEq(CalEquation):
         except:
           continue
 
-    # This while look will allow the program to retain all the user's inputs, but allowing the user to change what kind of activity they'd like to conduct to burn the calories.
+    # This while loop will allow the program to retain all the user's inputs, and let the user to change what kind of activity they'd like to conduct to burn the calories.
     while True:      
       rec_act_df = self.user_input_act()
       rec_act_df.rename(columns= {"Activity, Exercise or Sport (1 hour)": "Activity, Exercise or Sport"}, inplace= True)
